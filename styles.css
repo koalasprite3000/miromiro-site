@@ -617,9 +617,9 @@ h1, h2, h3, h4, h5, h6 {
 	border: 3px solid #000;
 	box-shadow: 10px 10px 0px rgba(0,0,0,0.2);
 	display: flex;
-  flex: 1;
-  overflow: hidden; /* Important: prevents the book itself from stretching */
-  position: relative;
+	flex: 1;
+	overflow: hidden; /* Important: prevents the book itself from stretching */
+	position: relative;
 	/* min-height: 500px;
 	padding: 15px; */
 }
@@ -632,10 +632,10 @@ h1, h2, h3, h4, h5, h6 {
 	flex: 1;
 	padding: 30px;
 	position: relative;
-  height: 100%; /* Match book height */
-  overflow-y: auto; /* Adds scrollbar only if content is too long */
-  box-sizing: border-box;
-  -webkit-overflow-scrolling: touch;
+	height: 100%; /* Match book height */
+	overflow-y: auto; /* Adds scrollbar only if content is too long */
+	box-sizing: border-box;
+	-webkit-overflow-scrolling: touch;
 }
 
 .journal-page-left {
@@ -736,6 +736,12 @@ h1, h2, h3, h4, h5, h6 {
 	aspect-ratio: 1;
 	object-fit: cover;
 	width: 100%;
+}
+
+.polaroid-static-shoe img {
+    aspect-ratio: 1 / 1; /* Or whatever your image ratio is */
+    background-color: #f0f0f0; /* Placeholder color while loading */
+    display: block;
 }
 
 .journal-caption {
@@ -1394,6 +1400,11 @@ h1, h2, h3, h4, h5, h6 {
 		padding-bottom: 40px !important;
 		width: 100% !important;
 	}
+
+	.journal-page-left {
+
+        min-height: 400px; /* Ensures the polaroids are fully visible */ 
+    }
 
 	.journal-lines {
 		max-height: 300px;

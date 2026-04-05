@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', () => {
+window.addEventListener('load', () => {
     // scroll - Target the content area that actually has the scrollbar
     const contentArea = document.querySelector('.content-area');
 
@@ -40,6 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function carouselmodal(){
     //carousel
+    const isMobile = window.innerWidth <= 768;
     const carousel = document.querySelector('.product-carousel');
     const prevBtn = document.querySelector('.nav-btn.prev');
     const nextBtn = document.querySelector('.nav-btn.next');
@@ -53,6 +54,7 @@ function carouselmodal(){
     const scrollSpeed = 1000; // 3 seconds per slide
 
     const startAutoScroll = () => {
+        if (isMobile) return;
         autoScrollInterval = setInterval(() => {
             const maxScroll = carousel.scrollWidth - carousel.clientWidth;
             
@@ -83,21 +85,32 @@ function carouselmodal(){
     }, {passive: true});
 
     // Next Button Click
+    let isTransitioning = false;
     nextBtn.addEventListener('click', () => {
+        if (isTransitioning) return;
+        isTransitioning = true;
         stopAutoScroll(); // Stop completely or just restart the timer
         carousel.scrollBy({
             left: scrollAmount,
             behavior: 'smooth' // Smooth sliding animation
         });
+        setTimeout(() => {
+            isTransitioning = false;
+        }, 500); // Matches your CSS transition time
     });
 
     // Previous Button Click
     prevBtn.addEventListener('click', () => {
+        if (isTransitioning) return;
+        isTransitioning = true;
         stopAutoScroll(); // Stop completely or just restart the timer
         carousel.scrollBy({
             left: -scrollAmount,
             behavior: 'smooth'
         });
+        setTimeout(() => {
+            isTransitioning = false;
+        }, 500); // Matches your CSS transition time
     });
     
     // Optional: Auto-hide buttons at the start/end of the scroll
@@ -122,17 +135,65 @@ function journalmodal(){
     // Data for your scrapbook entries
     const journalData = {
         p1: {
-            title: "BLUE_MIST_VIBES.exe",
-            text: "Today's fit is inspired by early 2000s street style. Paired the chunky sneakers with baggy cargos for that perfect silhouette. Stay cute!",
-            img: "images/outfit1-img.png"
+            title: "3 Cute Outfit Ideas to Style Your MiroMiro Sneakers 💖 <br>BLUE_MIST_VIBES.txt",
+            text: `
+            <p>
+            The <strong>Y2K aesthetic</strong> is all about making a statement, and nothing says "iconic" like chunky, dark silhouettes. These <strong>cute shoes</strong> draw heavy inspiration from <strong>Korean styles</strong>, where oversized sneakers meet feminine, structured layers for a perfectly balanced look.
+            </p>
+
+            <p>
+            In this fit, the deep black sneakers provide a solid foundation for a pleated skirt and leg-warmer combo—a staple in modern <strong>Korean fashion</strong>. By mixing high-contrast tones with retro textures, you create an outfit that feels both nostalgic and futuristic. These sneakers aren't just footwear; they are the centerpiece of your street-style rotation.
+            </p>
+
+            <p>
+            At <strong>MiroMiro</strong>, we prioritize the "Soft Girl" meets "Cyber" vibe, ensuring our shoes offer the platform height you want with the comfort your daily life demands.
+            </p>
+
+            <p>
+            For more outfit inspiration, check out 
+            <a href="https://www.pinterest.com/" target="_blank">Pinterest</a>.
+            </p>
+
+            <div class="journal-socials">
+            <strong>Follow us:</strong><br>
+            <a href="https://www.instagram.com/" target="_blank">Instagram</a> |
+            <a href="https://www.tiktok.com/@miromiroshoes" target="_blank">TikTok</a>
+            </div>
+            `,
+            img: "images/outfit1-img.png",
+            img1: "images/shoe3-img.png"
         },
         p2: {
-            title: "PINK_CORE_LOG.txt",
-            text: "Found these vintage leg warmers! They match the Lavender Glow shoes perfectly. Feeling like a total digital princess today. <3",
-            img: "images/outfit2-img.png"
+            title: "3 Cute Outfit Ideas to Style Your MiroMiro Sneakers 💖 <br>PINK_CORE_LOG.txt",
+            text: `
+            <p>
+            Step into a lighter side of the <strong>Y2K aesthetic</strong> with clean whites and metallic accents. This look highlights how <strong>cute shoes</strong> can soften a streetwear silhouette, blending <strong>Korean styles</strong> with a dreamy, coquette-inspired color palette that works for any season.
+            </p>
+
+            <p>
+            The star details on these sneakers pop against denim or light-wash cargos, embodying the playful spirit of early 2000s fashion. <strong>Korean fashion</strong> often utilizes light-colored, chunky footwear to elongate the legs while keeping the overall vibe effortless and airy. Whether you're heading to a café or a photoshoot, these shoes keep the energy high.
+            </p>
+
+            <p>
+            At <strong>MiroMiro</strong>, we design with the Gen Z trendsetter in mind—crafting aesthetic footwear that bridges the gap between casual comfort and high-fashion "it-girl" moments.
+            </p>
+
+            <p>
+            For more outfit inspiration, check out 
+            <a href="https://www.pinterest.com/" target="_blank">Pinterest</a>.
+            </p>
+
+            <div class="journal-socials">
+            <strong>Follow us:</strong><br>
+            <a href="https://www.instagram.com/" target="_blank">Instagram</a> |
+            <a href="https://www.tiktok.com/@miromiroshoes" target="_blank">TikTok</a>
+            </div>
+            `,
+            img: "images/outfit2-img.png",
+            img1: "images/shoe6-img.png"
         },
         p3: {
-            title: "3 Cute Outfit Ideas to Style Your MiroMiro Sneakers 💖 <br>URBAN_FAIRY.exe",
+            title: "3 Cute Outfit Ideas to Style Your MiroMiro Sneakers 💖 <br>URBAN_FAIRY.txt",
             text: `
             <p>
             The return of <strong>Y2K aesthetic</strong> fashion is redefining everyday style — and nothing completes the look better than the right pair of <strong>cute shoes</strong>. Inspired by <strong>Korean styles</strong>, this outfit blends minimal structure with playful streetwear energy.
@@ -154,10 +215,11 @@ function journalmodal(){
             <div class="journal-socials">
             <strong>Follow us:</strong><br>
             <a href="https://www.instagram.com/" target="_blank">Instagram</a> |
-            <a href="https://www.tiktok.com/" target="_blank">TikTok</a>
+            <a href="https://www.tiktok.com/@miromiroshoes" target="_blank">TikTok</a>
             </div>
             `,
-            img: "images/outfit3-img.png"
+            img: "images/outfit3-img.png",
+            img1: "images/shoe5-img.png"
         }
     };
 
@@ -172,7 +234,7 @@ function journalmodal(){
                 document.getElementById('journal-title').innerHTML = data.title;
                 document.getElementById('journal-text').innerHTML = data.text;
                 document.getElementById('journal-img').src = data.img;
-                // document.getElementById('journal-img1').src = data.img;
+                document.getElementById('journal-img1').src = data.img1;
                 
                 modal.style.display = 'flex';
                 // Prevent background scrolling when open
