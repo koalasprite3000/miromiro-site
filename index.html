@@ -395,5 +395,29 @@
     ]
     }
 </script>
+<script>
+  const observerOptions = {
+    threshold: 0.5 // Trigger when 50% of the section is visible
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        // Send event when section comes into view
+        gtag('event', 'section_view', {
+          'section_name': entry.target.id
+        });
+        
+        // Stop observing once tracked (optional, so it doesn't fire every time they scroll up/down)
+        observer.unobserve(entry.target);
+      }
+    });
+  }, observerOptions);
+
+  // Tell the observer which sections to watch
+  document.querySelectorAll('#select-pair-section, #irl-fits, #journal-section').forEach(section => {
+    observer.observe(section);
+  });
+</script>
 </body>
 </html>
