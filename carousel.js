@@ -1,4 +1,7 @@
 window.addEventListener('load', () => {
+    // Initialize Basket
+    updateBasketUI();
+
     // scroll - Target the content area that actually has the scrollbar
     const contentArea = document.querySelector('.content-area');
 
@@ -34,6 +37,17 @@ window.addEventListener('load', () => {
     journalmodal();
 
     shopmodal();
+
+    //Close drop downmenu on clicking outside the book
+    window.addEventListener('click', (e) => {
+        const container = document.querySelector('.header-left');
+        const checkbox = document.querySelector('.menu-checkbox');
+
+        // If the click is NOT inside the header-left container at all
+        if (!container.contains(e.target)) {
+            checkbox.checked = false;
+        }
+    });
 });
 
 
@@ -156,7 +170,6 @@ function journalmodal(){
 
             <div class="journal-socials">
             <strong>Follow us:</strong><br>
-            <a href="https://www.instagram.com/" target="_blank">Instagram</a> |
             <a href="https://www.tiktok.com/@miromiroshoes" target="_blank">TikTok</a>
             </div>
             `,
@@ -185,7 +198,6 @@ function journalmodal(){
 
             <div class="journal-socials">
             <strong>Follow us:</strong><br>
-            <a href="https://www.instagram.com/" target="_blank">Instagram</a> |
             <a href="https://www.tiktok.com/@miromiroshoes" target="_blank">TikTok</a>
             </div>
             `,
@@ -214,7 +226,6 @@ function journalmodal(){
 
             <div class="journal-socials">
             <strong>Follow us:</strong><br>
-            <a href="https://www.instagram.com/" target="_blank">Instagram</a> |
             <a href="https://www.tiktok.com/@miromiroshoes" target="_blank">TikTok</a>
             </div>
             `,
@@ -263,7 +274,7 @@ function shopmodal(){
     const shopModal = document.getElementById('shop-modal');
     const detailView = document.getElementById('product-detail-view');
     const backBtn = document.querySelector('.detail-back-btn');
-
+    
     // Select BOTH carousel cards and shop items
     const allClickableShoes = document.querySelectorAll('.shop-item, .product-card');
 
@@ -290,6 +301,16 @@ function shopmodal(){
             
             document.body.style.overflow = 'hidden'; 
         });
+    });
+
+    // add to basket
+    const addBtn = document.querySelector('.add-to-cart-big');
+    addBtn.addEventListener('click', () => {
+        const name = document.getElementById('detail-name').innerText;
+        const price = document.querySelector('.price-tag').innerText;
+        const img = document.getElementById('main-detail-img').src;
+        addToBasket(name, price, img);
+        // detailView.style.display = 'none';
     });
 
     // Back button only closes the detail view, keeping the shop open
@@ -336,6 +357,7 @@ function shopmodal(){
     // backBtn.addEventListener('click', () => {
     //     detailView.style.display = 'none';
     // });
+
 }
 
 // shopping window modal product detail sub window - Function to update the main image in the detail view
@@ -344,4 +366,29 @@ function updateMainImg(src) {
     // Update active thumbnail styling
     document.querySelectorAll('.angle-thumb').forEach(t => t.classList.remove('active'));
     event.target.classList.add('active');
+}
+
+// basket
+function updateBasketUI() {
+    const badge = document.getElementById('basket-count');
+    if (!badge) return;
+
+    const basket = JSON.parse(localStorage.getItem('miro_basket')) || [];
+    const totalItems = basket.length;
+    
+    badge.innerText = totalItems;
+    badge.style.display = totalItems > 0 ? 'inline-block' : 'none';
+}
+
+// Function to add item
+function addToBasket(name, price, img) {
+    let basket = JSON.parse(localStorage.getItem('miro_basket')) || [];
+    const item = { name, price, img, id: Date.now() };
+
+    basket.push(item);
+    localStorage.setItem('miro_basket', JSON.stringify(basket));
+    updateBasketUI();
+    
+    // Optional: Visual feedback
+    alert(name + " added to system basket ❤️");
 }

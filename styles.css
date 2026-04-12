@@ -122,6 +122,33 @@ h1, h2, h3, h4, h5, h6 {
 	vertical-align: middle;
 }
 
+.basket-container {
+    position: relative;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    padding: 5px 10px;
+    border: 1px solid transparent;
+}
+
+.basket-container:hover {
+    background: rgba(0,0,0,0.05);
+    border: 1px inset #fff; /* Retro pressed effect */
+}
+
+.basket-badge {
+    background: #ff0000; /* Bright red notification */
+    color: white;
+    font-family: 'Courier New', monospace;
+    font-weight: bold;
+    font-size: 12px;
+    padding: 2px 6px;
+    border-radius: 0; /* Keep it blocky/retro */
+    border: 1px solid #000;
+    margin-left: 5px;
+    display: none; /* Hidden when 0 */
+}
+
 .content-area {
 	flex: 1;
 	overflow-x: visible;

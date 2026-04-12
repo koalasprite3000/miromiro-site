@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-H2KC6FN4TW"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-H2KC6FN4TW');
+    </script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cute Shoes for Women | Y2K Aesthetic & Korean Style Sneakers - basket</title>
+    <meta name="description" content="Shop cute shoes for women inspired by Y2K aesthetic and Korean styles. Discover trendy sneakers, soft girl looks, and aesthetic footwear made for Gen Z fashion.">
+    <meta property="og:title" content="Cute Shoes for Women | Y2K Aesthetic Korean Style Sneakers">
+    <meta property="og:description" content="Shop cute shoes for women inspired by Y2K aesthetic and Korean styles.">
+    <meta property="og:image" content="images/hero-img.png">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://miromiro.onrender.com/">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<div class="phone-screen">
+    <header class="retro-header">
+        <div class="header-left">
+            <input type="checkbox" id="menu-toggle" class="menu-checkbox">
+            
+            <label for="menu-toggle" class="menu-button">
+            <img src="images/menu-icon.png" alt="System Home" class="pixel-icon">
+            <span class="menu-text">MENU</span>
+            </label>
+
+            <ul class="retro-dropdown">
+            <li class="dropdown-item"><a href="index.html"><span class="icon">📁</span> HOME.exe</a></li>
+            <li class="dropdown-item"><a href="index.html#select-pair-section"><span class="icon">👟</span> NEW_DROPS</a></li>
+            <li class="dropdown-item"><a href="index.html#irl-fits"><span class="icon">📸</span> BLOG</a></li>
+            <li class="separator"></li>
+            <li class="dropdown-item"><a href="index.html#about-us"><span class="icon">💬</span> ABOUT_US</a></li>
+            <li class="dropdown-item"><span class="icon">✉️</span> CONTACT</li>
+            </ul>
+        </div>
+
+        <div class="logo-container">
+            <span class="heart-outline">♡</span>
+            <div class="miromiro-logo">MiroMiro</div>
+            <span class="heart-outline">♡</span>
+        </div>
+        
+        <div class="header-right">
+            <!-- <span class="system-status">📶 100%</span> -->
+            <a href="basket.html" class="basket-container">
+                <img src="images/basket-icon.png" alt="Basket" class="pixel-icon">
+                <span id="basket-count" class="basket-badge">0</span>
+            </a>
+        </div>
+    </header>
+    <main class="content-area">
+        <div class="shop-window" style="display: block; position: relative; margin: 20px auto; background-color: #fff;">
+            <div class="window-header">
+                <span>BASKET.exe</span>
+            </div>
+            <div class="window-content">
+                <div id="basket-items-list">
+                </div>
+                <div class="basket-footer">
+                    <p>TOTAL: <span id="basket-total">£0.00</span></p>
+                    <button class="retro-btn">CHECKOUT</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    function displayBasket() {
+        const list = document.getElementById('basket-items-list');
+        const basket = JSON.parse(localStorage.getItem('miro_basket')) || [];
+        
+        if (basket.length === 0) {
+            list.innerHTML = "<p style='padding:20px;'>Your basket is empty...</p>";
+            return;
+        }
+
+        list.innerHTML = basket.map(item => `
+            <div class="basket-item" style="display:flex; align-items:center; gap:15px; border-bottom:1px solid #000; padding:10px;">
+                <img src="${item.img}" style="width:50px; height:50px; border:1px solid #000;">
+                <div>
+                    <div style="font-weight:bold;">${item.name}</div>
+                    <div>${item.price}</div>
+                </div>
+            </div>
+        `).join('');
+    }
+    displayBasket();
+</script>
+<script type="application/ld+json">
+    {
+    "@context": "https://schema.org",
+    "@type": "Store",
+    "name": "MiroMiro",
+    "description": "Cute shoes for women inspired by Y2K aesthetic and Korean styles",
+    "url": "https://miromiro.onrender.com/",
+    "sameAs": [
+        "https://www.tiktok.com/miromiroshoes",
+    ]
+    }
+</script>
+</body>
+</html>
