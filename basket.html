@@ -76,8 +76,11 @@
         </div>
     </div>
 </div>
-<script>
+<script src="carousel.js" defer></script>
+<!-- <script async="false">
     function displayBasket() {
+        updateBasketUI();
+
         const list = document.getElementById('basket-items-list');
         const basket = JSON.parse(localStorage.getItem('miro_basket')) || [];
         
@@ -97,7 +100,7 @@
         `).join('');
     }
     displayBasket();
-</script>
+</script> -->
 <script type="application/ld+json">
     {
     "@context": "https://schema.org",

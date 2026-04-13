@@ -53,6 +53,10 @@ window.addEventListener('load', () => {
 
 
 function carouselmodal(){
+
+    const basketexists = document.getElementById('basket-items-list');
+    if (basketexists) return; //If the basket exist (e.g., your on basket.html), stop
+
     //carousel
     const isMobile = window.innerWidth <= 768;
     const carousel = document.querySelector('.product-carousel');
@@ -141,6 +145,9 @@ function carouselmodal(){
 }
 
 function journalmodal(){
+    const basketexists = document.getElementById('basket-items-list');
+    if (basketexists) return; //If the basket exist (e.g., your on basket.html), stop
+
     // Journal
     const modal = document.getElementById('journal-modal');
     const closeBtn = document.querySelector('.journal-close');
@@ -270,6 +277,9 @@ function journalmodal(){
 }
 
 function shopmodal(){
+    const basketexists = document.getElementById('basket-items-list');
+    if (basketexists) return; //If the basket exist (e.g., your on basket.html), stop
+
     //Opening shopping modal
     const shopModal = document.getElementById('shop-modal');
     const detailView = document.getElementById('product-detail-view');
@@ -362,6 +372,9 @@ function shopmodal(){
 
 // shopping window modal product detail sub window - Function to update the main image in the detail view
 function updateMainImg(src) {
+    const basketexists = document.getElementById('basket-items-list');
+    if (basketexists) return; //If the basket exist (e.g., your on basket.html), stop
+    
     document.getElementById('main-detail-img').src = src;
     // Update active thumbnail styling
     document.querySelectorAll('.angle-thumb').forEach(t => t.classList.remove('active'));
@@ -378,6 +391,17 @@ function updateBasketUI() {
     
     badge.innerText = totalItems;
     badge.style.display = totalItems > 0 ? 'inline-block' : 'none';
+
+    const totalSum = basket.reduce((acc, item) => {
+        // Remove "£" or any non-numeric characters except the decimal point
+        const numericPrice = parseFloat(item.price.replace(/[^0-9.]/g, ''));
+        return acc + (isNaN(numericPrice) ? 0 : numericPrice);
+    }, 0);
+
+    const totalElement = document.getElementById('basket-total');
+    if (totalElement) {
+        totalElement.innerText = `£${totalSum.toFixed(2)}`;
+    }
 }
 
 // Function to add item
@@ -392,3 +416,29 @@ function addToBasket(name, price, img) {
     // Optional: Visual feedback
     alert(name + " added to system basket ❤️");
 }
+
+function displayBasket() {
+    updateBasketUI();
+
+    const basketexists = document.getElementById('basket-items-list');
+    if (!basketexists) return; //If the basket doesn't exist (e.g., your on index.html), stop
+
+    const list = document.getElementById('basket-items-list');
+    const basket = JSON.parse(localStorage.getItem('miro_basket')) || [];
+    
+    if (basket.length === 0) {
+        list.innerHTML = "<p style='padding:20px;'>Your basket is empty...</p>";
+        return;
+    }
+
+    list.innerHTML = basket.map(item => `
+        <div class="basket-item" style="display:flex; align-items:center; gap:15px; border-bottom:1px solid #000; padding:10px;">
+            <img src="${item.img}" style="width:50px; height:50px; border:1px solid #000;">
+            <div>
+                <div style="font-weight:bold;">${item.name}</div>
+                <div>${item.price}</div>
+            </div>
+        </div>
+    `).join('');
+}
+displayBasket();
