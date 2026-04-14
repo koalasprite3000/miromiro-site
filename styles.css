@@ -1,3 +1,10 @@
+:root {
+	--header-height: 20px;
+	--lilac-accent: #e0ccff;
+	--retro-border: 2px solid #000000;
+	--window-bg: #ffffff;
+}
+
 html, body {
 	height: 100vh;
 	margin: 0 0;
@@ -10,6 +17,7 @@ h1, h2, h3, h4, h5, h6 {
 	padding: 0;
 }
 
+/* main shell of site */
 .phone-screen {
 	background-color: #e0ccff;
 	background-image: conic-gradient(#d1e9ff 90deg,#e0ccff 90deg 180deg,#d1e9ff 180deg 270deg,#e0ccff 270deg);
@@ -24,6 +32,7 @@ h1, h2, h3, h4, h5, h6 {
 	width: 100vw;
 }
 
+/* header */
 .retro-header {
 	align-items: center;
 	backdrop-filter: blur(4px);
@@ -149,6 +158,33 @@ h1, h2, h3, h4, h5, h6 {
     display: none; /* Hidden when 0 */
 }
 
+.logo-container {
+	align-items: center;
+	display: flex;
+	gap: 15px;
+	left: 50%;
+	position: absolute;
+	transform: translateX(-50%);
+}
+
+.miromiro-logo {
+	color: #000;
+	font-family: "VT323", monospace;
+	font-size: 32px;
+	letter-spacing: 4px;
+	margin: 0;
+	text-shadow: 2px 2px 0px var(--lilac-accent);
+	text-transform: uppercase;
+}
+
+.heart-outline {
+	animation: pulse 2s infinite ease-in-out;
+	color: #000;
+	font-size: 28px;
+	font-weight: normal;
+}
+
+/* main body of site - content area */
 .content-area {
 	flex: 1;
 	overflow-x: visible;
@@ -188,13 +224,6 @@ h1, h2, h3, h4, h5, h6 {
 	border: 2px solid #000;
 	display: block;
 	height: 16px;
-}
-
-:root {
-	--header-height: 20px;
-	--lilac-accent: #e0ccff;
-	--retro-border: 2px solid #000000;
-	--window-bg: #ffffff;
 }
 
 .section {
@@ -251,6 +280,7 @@ h1, h2, h3, h4, h5, h6 {
 	text-transform: uppercase;
 }
 
+/* hero/new drop section */
 .image-container {
 	align-items: center;
 	background: #f9f9f9;
@@ -315,6 +345,7 @@ h1, h2, h3, h4, h5, h6 {
 	left: 5%;
 }
 
+/* select pair section */
 #select-pair-section {
 	font-family: 'Courier New', Courier, monospace;
 	margin-top: 30px;
@@ -410,7 +441,7 @@ h1, h2, h3, h4, h5, h6 {
 	transform: translateY(-50%) translate(2px,2px);
 }
 
-/* --- IRL FITS/ABOUT US Sections ---*/
+/* IRL Fits/About Us Sections */
 .footer-layout {
 	display: flex;
 	font-family: 'Courier New', Courier, monospace;
@@ -583,32 +614,6 @@ h1, h2, h3, h4, h5, h6 {
 	left: 40%;
 }
 
-.logo-container {
-	align-items: center;
-	display: flex;
-	gap: 15px;
-	left: 50%;
-	position: absolute;
-	transform: translateX(-50%);
-}
-
-.miromiro-logo {
-	color: #000;
-	font-family: "VT323", monospace;
-	font-size: 32px;
-	letter-spacing: 4px;
-	margin: 0;
-	text-shadow: 2px 2px 0px var(--lilac-accent);
-	text-transform: uppercase;
-}
-
-.heart-outline {
-	animation: pulse 2s infinite ease-in-out;
-	color: #000;
-	font-size: 28px;
-	font-weight: normal;
-}
-
 .modal-overlay {
 	align-items: center;
 	backdrop-filter: blur(8px);
@@ -627,15 +632,15 @@ h1, h2, h3, h4, h5, h6 {
 .journal-container {
 	animation: journalPop 0.4s cubic-bezier(0.175,0.885,0.32,1.275);
 	width: 800px;
-  max-width: 95vw;
-  height: 90vh; /* Keeps it from going off top/bottom */
-  max-height: 800px; /* Optional: cap it so it doesn't look too big on huge monitors */
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  display: flex;
-  flex-direction: column;
+	max-width: 95vw;
+	height: 90vh; /*keeps it from going off top/bottom */
+	max-height: 800px; /*cap it so it doesn't look too big on huge monitors*/
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	display: flex;
+	flex-direction: column;
 }
 
 .journal-book {
@@ -645,7 +650,7 @@ h1, h2, h3, h4, h5, h6 {
 	box-shadow: 10px 10px 0px rgba(0,0,0,0.2);
 	display: flex;
 	flex: 1;
-	overflow: hidden; /* Important: prevents the book itself from stretching */
+	overflow: hidden; /*important: prevents the book itself from stretching*/
 	position: relative;
 	/* min-height: 500px;
 	padding: 15px; */
@@ -659,8 +664,8 @@ h1, h2, h3, h4, h5, h6 {
 	flex: 1;
 	padding: 30px;
 	position: relative;
-	height: 100%; /* Match book height */
-	overflow-y: auto; /* Adds scrollbar only if content is too long */
+	height: 100%; /*match book height*/
+	overflow-y: auto; /*adds scrollbar only if content is too long*/
 	box-sizing: border-box;
 	-webkit-overflow-scrolling: touch;
 }
@@ -766,8 +771,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .polaroid-static-shoe img {
-    aspect-ratio: 1 / 1; /* Or whatever your image ratio is */
-    background-color: #f0f0f0; /* Placeholder color while loading */
+    aspect-ratio: 1 / 1; 
+    background-color: #f0f0f0; /*placeholder color while loading */
     display: block;
 }
 
@@ -777,8 +782,8 @@ h1, h2, h3, h4, h5, h6 {
 	text-align: center;
 }
 
-/* Styling for the Flip Button */
-.journal-footer {
+
+.journal-footer {/*styling for the flip Button*/
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -797,7 +802,7 @@ h1, h2, h3, h4, h5, h6 {
   transition: all 0.2s ease;
 }
 
-/* --- Shop Window Modal -- */
+/* Shop Window Modal */
 .shop-window {
 	background: #c0c0c0;
 	border-bottom-color: #808080;
@@ -1035,225 +1040,199 @@ h1, h2, h3, h4, h5, h6 {
 /* --- Media Queries - hover. Only apply these effects to devices that support true hovering (Desktop) --- */
 @media (hover: hover) {
 
-  /* menu*/
-  .menu-button:hover .menu-text {
-    color: #7a5cdb;
-  }
+	/*menu*/
+	.menu-button:hover .menu-text {
+		color: #7a5cdb;
+	}
 
-  .menu-button:active {
-    transform: translateY(2px);
-  }
+	.menu-button:active {
+		transform: translateY(2px);
+	}
 
-  .dropdown-item:hover {
-    background-color: #e0ccff;
-    color: #000;
-    outline: 1px dashed #000;
-  }
+	.dropdown-item:hover {
+		background-color: #e0ccff;
+		color: #000;
+		outline: 1px dashed #000;
+	}
 
-  .dropdown-item:nth-child(even):hover {
-    background-color: #d1e9ff;
-  }
+	.dropdown-item:nth-child(even):hover {
+		background-color: #d1e9ff;
+	}
 
-  /*select pair/irl fits windows*/
-  #select-pair-section, .footer-layout > div {
-      transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), z-index 0s;
-      position: relative;
-      cursor: pointer;
-  }
+	/*select pair/irl fits windows*/
+	#select-pair-section, .footer-layout > div {
+		transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), z-index 0s;
+		position: relative;
+		cursor: pointer;
+	}
 
-  #select-pair-section:hover {
-      transform: scale(1.05);
-      z-index: 999;
-  }
+	#select-pair-section:hover {
+		transform: scale(1.05);
+		z-index: 999;
+	}
 
-  .irl-fits-container:hover, .about-us-container:hover {
-      transform: scale(1.09);
-      z-index: 999;
-  }
+	.irl-fits-container:hover, .about-us-container:hover {
+		transform: scale(1.09);
+		z-index: 999;
+	}
 
-  #select-pair-section:hover .horizontal-window, 
-  .irl-fits-container:hover .fits-window, 
-  .about-us-container:hover .about-window-dialog {
-      box-shadow: 15px 15px 0px rgba(0,0,0,0.2);
-  }
+	#select-pair-section:hover .horizontal-window, 
+	.irl-fits-container:hover .fits-window, 
+	.about-us-container:hover .about-window-dialog {
+		box-shadow: 15px 15px 0px rgba(0,0,0,0.2);
+	}
 
-  /*select pair*/
-  .product-card:hover {
-    transform: translateY(-5px);
-  }
+	/*select pair*/
+	.product-card:hover {
+		transform: translateY(-5px);
+	}
 
-  .product-card:hover .product-label {
-    color: #fff;
-    font-weight: bold;
-    text-shadow: 2px 2px 0px #000;
-  }
+	.product-card:hover .product-label {
+		color: #fff;
+		font-weight: bold;
+		text-shadow: 2px 2px 0px #000;
+	}
 
-  .product-card:nth-child(3n+1):hover .product-img-box {
-    background-color: #ff00ff;
-    border: 2px solid #000;
-    box-shadow: 5px 5px 0px #550055;
-  }
+	.product-card:nth-child(3n+1):hover .product-img-box {
+		background-color: #ff00ff;
+		border: 2px solid #000;
+		box-shadow: 5px 5px 0px #550055;
+	}
 
-  .product-card:nth-child(3n+2):hover .product-img-box {
-    background-color: #00ffff;
-    border: 2px solid #000;
-    box-shadow: 5px 5px 0px #005555;
-  }
+	.product-card:nth-child(3n+2):hover .product-img-box {
+		background-color: #00ffff;
+		border: 2px solid #000;
+		box-shadow: 5px 5px 0px #005555;
+	}
 
-  .product-card:nth-child(3n+3):hover .product-img-box {
-    background-color: #00ff00;
-    border: 2px solid #000;
-    box-shadow: 5px 5px 0px #005500;
-  }
+	.product-card:nth-child(3n+3):hover .product-img-box {
+		background-color: #00ff00;
+		border: 2px solid #000;
+		box-shadow: 5px 5px 0px #005500;
+	}
 
-  .product-card:active {
-    transform: scale(0.95);
-  }
+	.product-card:active {
+		transform: scale(0.95);
+	}
 
-  /*polaroid irl fits*/
-  .polaroid:hover {
-    box-shadow: 15px 15px 30px rgba(0,0,0,0.3);
-    transform: rotate(0deg) scale(1.8) translateY(-20px) !important;
-    z-index: 100 !important;
-  }
+	/*polaroid irl fits*/
+	.polaroid:hover {
+		box-shadow: 15px 15px 30px rgba(0,0,0,0.3);
+		transform: rotate(0deg) scale(1.8) translateY(-20px) !important;
+		z-index: 100 !important;
+	}
 
-  /*about us*/
-  .ctrl-btn:hover {
-    background: #eee;
-  }
+	/*about us*/
+	.ctrl-btn:hover {
+		background: #eee;
+	}
 
-  /*shop window modal*/
-  .shop-item:hover {
-    background: #f0f0ff;
-    outline: 2px solid #7a5cdb;
-  }
+	/*shop window modal*/
+	.shop-item:hover {
+		background: #f0f0ff;
+		outline: 2px solid #7a5cdb;
+	}
 
-  /*journal pages*/
-  .flip-btn:hover {
-    background-color: #5d4037;
-    color: #fff9e6;
-  }
+	/*journal pages*/
+	.flip-btn:hover {
+		background-color: #5d4037;
+		color: #fff9e6;
+	}
 
-  /*old*/
-  /* #select-pair-section, .footer-layout > div {
-    cursor: pointer;
-    position: relative;
-    transition: transform 0.3s cubic-bezier(0.175,0.885,0.32,1.275), z-index 0s;
-  }
-
-  #select-pair-section:hover {
-    transform: scale(1.05);
-    z-index: 999;
-  }
-
-  .irl-fits-container:hover, .about-us-container:hover {
-    transform: scale(1.09);
-    z-index: 999;
-  }
-
-  #select-pair-section:hover .horizontal-window, .irl-fits-container:hover .fits-window, .about-us-container:hover .about-window-dialog {
-    box-shadow: 15px 15px 0px rgba(0,0,0,0.2);
-  }
-
-  .footer-layout:has(div:hover) {
-    gap: 40px;
-  } */
 }
 
-@media (hover: none) {/*for mobile: Use a simple "Active" press effect instead of a giant zoom*/
+@media (hover: none) {/*for mobile: Use active press effect instead of a giant zoom*/
 
-  .menu-button:active{
-    color: #7a5cdb;
-    transform: translateY(2px);
-  }
+	/*menu*/
+	.menu-button:active{
+		color: #7a5cdb;
+		transform: translateY(2px);
+	}
 
-  /* .menu-text:active{
-    color: #7a5cdb;
-  } */
+	.dropdown-item:active {
+		background-color: #e0ccff;
+		color: #000;
+		outline: 1px dashed #000;
+	}
 
-  .dropdown-item:active {
-    background-color: #e0ccff;
-    color: #000;
-    outline: 1px dashed #000;
-  }
+	.dropdown-item:nth-child(even):active {
+		background-color: #d1e9ff;
+	}
+	
+	/*select pair / irl fits sections*/
+	#select-pair-section {
+		transform: scale(1.05);
+		z-index: 999;
+		margin-bottom: 40px;
+	}
 
-  .dropdown-item:nth-child(even):active {
-    background-color: #d1e9ff;
-  }
-  
-  #select-pair-section {
-      transform: scale(1.05);
-      z-index: 999;
-      margin-bottom: 40px;
-  }
+	.irl-fits-container, .about-us-container {
+		transform: scale(1.05);
+		z-index: 999;
+	}
 
-  .irl-fits-container, .about-us-container {
-      transform: scale(1.05);
-      z-index: 999;
-  }
+	#select-pair-section .horizontal-window, 
+	.irl-fits-container .fits-window, 
+	.about-us-container .about-window-dialog {
+		box-shadow: 15px 15px 0px rgba(0,0,0,0.2);
+	}
 
-  #select-pair-section .horizontal-window, 
-  .irl-fits-container .fits-window, 
-  .about-us-container .about-window-dialog {
-      box-shadow: 15px 15px 0px rgba(0,0,0,0.2);
-  }
+	.footer-layout:has(div) {
+		gap: 40px;
+	}
 
-  .footer-layout:has(div) {
-    gap: 40px;
-  }
+	/*select pair*/
+	.product-card:active {
+		transform: translateY(-5px);
+	}
 
-  /*select pair*/
-  .product-card:active {
-    transform: translateY(-5px);
-  }
+	.product-card:active .product-label {
+		color: #fff;
+		font-weight: bold;
+		text-shadow: 2px 2px 0px #000;
+	}
 
-  .product-card:active .product-label {
-    color: #fff;
-    font-weight: bold;
-    text-shadow: 2px 2px 0px #000;
-  }
+	.product-card:nth-child(3n+1):active .product-img-box {
+		background-color: #ff00ff;
+		border: 2px solid #000;
+		box-shadow: 5px 5px 0px #550055;
+	}
 
-  .product-card:nth-child(3n+1):active .product-img-box {
-    background-color: #ff00ff;
-    border: 2px solid #000;
-    box-shadow: 5px 5px 0px #550055;
-  }
+	.product-card:nth-child(3n+2):active .product-img-box {
+		background-color: #00ffff;
+		border: 2px solid #000;
+		box-shadow: 5px 5px 0px #005555;
+	}
 
-  .product-card:nth-child(3n+2):active .product-img-box {
-    background-color: #00ffff;
-    border: 2px solid #000;
-    box-shadow: 5px 5px 0px #005555;
-  }
+	.product-card:nth-child(3n+3):active .product-img-box {
+		background-color: #00ff00;
+		border: 2px solid #000;
+		box-shadow: 5px 5px 0px #005500;
+	}
 
-  .product-card:nth-child(3n+3):active .product-img-box {
-    background-color: #00ff00;
-    border: 2px solid #000;
-    box-shadow: 5px 5px 0px #005500;
-  }
+	/*polaroid irl fits*/
+	.polaroid:active {
+		box-shadow: 15px 15px 30px rgba(0,0,0,0.3);
+		transform: rotate(0deg) scale(1.8) translateY(-20px) !important;
+		z-index: 100 !important;
+	}
 
-  /*polaroid irl fits*/
-  .polaroid:active {
-    box-shadow: 15px 15px 30px rgba(0,0,0,0.3);
-    transform: rotate(0deg) scale(1.8) translateY(-20px) !important;
-    z-index: 100 !important;
-  }
+	/*about us*/
+	.ctrl-btn:active {
+		background: #eee;
+	}
 
-  /*about us*/
-  .ctrl-btn:active {
-    background: #eee;
-  }
+	/*shop window modal*/
+	.shop-item:active {
+		background: #f0f0ff;
+		outline: 2px solid #7a5cdb;
+	}
 
-  /*shop window modal*/
-  .shop-item:active {
-    background: #f0f0ff;
-    outline: 2px solid #7a5cdb;
-  }
-
-  /*journal pages*/
-  .flip-btn:active {
-    background-color: #5d4037;
-    color: #fff9e6;
-  }
+	/*journal pages*/
+	.flip-btn:active {
+		background-color: #5d4037;
+		color: #fff9e6;
+	}
 }
 
 /* --- Media Queries - Responsive --- */
@@ -1393,13 +1372,6 @@ h1, h2, h3, h4, h5, h6 {
 		overflow-y: auto !important;
 	}
 
-	/* .detail-left, .detail-right {
-		border-right: none !important;
-		box-sizing: border-box;
-		padding: 15px !important;
-		width: 100% !important;
-	} */
-
 	.journal-book {
 		-webkit-overflow-scrolling: touch;
 		display: flex;
@@ -1429,7 +1401,6 @@ h1, h2, h3, h4, h5, h6 {
 	}
 
 	.journal-page-left {
-
         min-height: 400px; /* Ensures the polaroids are fully visible */ 
     }
 
@@ -1439,10 +1410,10 @@ h1, h2, h3, h4, h5, h6 {
 		padding-right: 10px;
 	}
 
-  .journal-footer {
-    flex-direction: column;
-    gap: 10px;
-  }
+	.journal-footer {
+		flex-direction: column;
+		gap: 10px;
+	}
 }
 
 @media screen and (max-width: 480px) {

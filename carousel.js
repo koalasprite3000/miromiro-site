@@ -2,7 +2,7 @@ window.addEventListener('load', () => {
     // Initialize Basket
     updateBasketUI();
 
-    // scroll - Target the content area that actually has the scrollbar
+    // Scroll - Target the content area that actually has the scrollbar
     const contentArea = document.querySelector('.content-area');
 
     // Listen for scroll wheels anywhere in the browser window
@@ -23,7 +23,7 @@ window.addEventListener('load', () => {
         }
     }, { passive: false });
 
-    // Optional: Add touch support for mobile "dead zones"
+    // Add touch support for mobile "dead zones"
     window.addEventListener('touchmove', (event) => {
         if (!event.composedPath().includes(contentArea)) {
             // Basic touch logic is more complex, but this 
@@ -57,7 +57,7 @@ function carouselmodal(){
     const basketexists = document.getElementById('basket-items-list');
     if (basketexists) return; //If the basket exist (e.g., your on basket.html), stop
 
-    //carousel
+    // carousel animations to only fire for desktop
     const isMobile = window.innerWidth <= 768;
     const carousel = document.querySelector('.product-carousel');
     const prevBtn = document.querySelector('.nav-btn.prev');
@@ -69,7 +69,7 @@ function carouselmodal(){
 
     // --- AUTO SCROLL LOGIC ---
     let autoScrollInterval;
-    const scrollSpeed = 1000; // 3 seconds per slide
+    const scrollSpeed = 1000; // 1 second per slide
 
     const startAutoScroll = () => {
         if (isMobile) return;
@@ -107,31 +107,31 @@ function carouselmodal(){
     nextBtn.addEventListener('click', () => {
         if (isTransitioning) return;
         isTransitioning = true;
-        stopAutoScroll(); // Stop completely or just restart the timer
+        stopAutoScroll(); // Stop completely
         carousel.scrollBy({
             left: scrollAmount,
             behavior: 'smooth' // Smooth sliding animation
         });
         setTimeout(() => {
             isTransitioning = false;
-        }, 500); // Matches your CSS transition time
+        }, 500); // Matches CSS transition time
     });
 
     // Previous Button Click
     prevBtn.addEventListener('click', () => {
         if (isTransitioning) return;
         isTransitioning = true;
-        stopAutoScroll(); // Stop completely or just restart the timer
+        stopAutoScroll(); // Stop completely 
         carousel.scrollBy({
             left: -scrollAmount,
             behavior: 'smooth'
         });
         setTimeout(() => {
             isTransitioning = false;
-        }, 500); // Matches your CSS transition time
+        }, 500); // Matches CSS transition time
     });
     
-    // Optional: Auto-hide buttons at the start/end of the scroll
+    // Auto-hide buttons at the start/end of the scroll
     carousel.addEventListener('scroll', () => {
         const scrollLeft = carousel.scrollLeft;
         const maxScroll = carousel.scrollWidth - carousel.clientWidth;
@@ -148,12 +148,12 @@ function journalmodal(){
     const basketexists = document.getElementById('basket-items-list');
     if (basketexists) return; //If the basket exist (e.g., your on basket.html), stop
 
-    // Journal
+    // Journal animations to only fire for desktop
     const modal = document.getElementById('journal-modal');
     const closeBtn = document.querySelector('.journal-close');
     const polaroids = document.querySelectorAll('.polaroid');
 
-    // Data for your scrapbook entries
+    // Data for journal/blog entries
     const journalData = {
         p1: {
             title: "3 Cute Outfit Ideas to Style Your MiroMiro Sneakers 💖 <br>BLUE_MIST_VIBES.txt",
@@ -381,7 +381,7 @@ function updateMainImg(src) {
     event.target.classList.add('active');
 }
 
-// basket
+// basket logic
 function updateBasketUI() {
     const badge = document.getElementById('basket-count');
     if (!badge) return;
@@ -413,7 +413,7 @@ function addToBasket(name, price, img) {
     localStorage.setItem('miro_basket', JSON.stringify(basket));
     updateBasketUI();
     
-    // Optional: Visual feedback
+    // Visual feedback to confirm item is added to basket
     alert(name + " added to system basket ❤️");
 }
 
