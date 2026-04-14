@@ -62,10 +62,8 @@ function carouselmodal(){
     const carousel = document.querySelector('.product-carousel');
     const prevBtn = document.querySelector('.nav-btn.prev');
     const nextBtn = document.querySelector('.nav-btn.next');
-
-    // Define how far one click should scroll
-    // 200px accounts for the card width + gap
-    const scrollAmount = 100; 
+    const scrollAmount = 100; // Define how far one click should scroll
+    let touchRestartTimeout;
 
     // --- AUTO SCROLL LOGIC ---
     let autoScrollInterval;
@@ -73,6 +71,8 @@ function carouselmodal(){
 
     const startAutoScroll = () => {
         if (isMobile) return;
+        clearInterval(autoScrollInterval);
+
         autoScrollInterval = setInterval(() => {
             const maxScroll = carousel.scrollWidth - carousel.clientWidth;
             
@@ -98,8 +98,8 @@ function carouselmodal(){
     selectPairSection.addEventListener('mouseleave', startAutoScroll);
     selectPairSection.addEventListener('touchstart', stopAutoScroll, {passive: true});
     selectPairSection.addEventListener('touchend', () => {
-        // Wait 2 seconds after the user stops touching before restarting
-        setTimeout(startAutoScroll, 2000);
+        clearTimeout(touchRestartTimeout);
+        touchRestartTimeout = setTimeout(startAutoScroll, 2000);//wait 2 seconds after the user stops touching before restarting
     }, {passive: true});
 
     // Next Button Click
@@ -139,8 +139,9 @@ function carouselmodal(){
         // If at the very beginning, fade the prev button slightly
         prevBtn.style.opacity = scrollLeft <= 0 ? "0.3" : "1";
         
-        // If at the very end, fade the next button slightly
-        nextBtn.style.opacity = scrollLeft >= maxScroll ? "0.3" : "1";
+        // If at the very end, fade the next button slightly - add 10 pixel buffer to maxscroll to ensure button fades
+        nextBtn.style.opacity = scrollLeft >= (maxScroll - 10) ? "0.3" : "1";
+        nextBtn.style.pointerEvents = scrollLeft >= (maxScroll - 10) ? "none" : "auto";
     });
 }
 
